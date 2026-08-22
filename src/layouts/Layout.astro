@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
+import { withBase } from '../utils/withBase';
 
 interface Props {
   title?: string;
@@ -11,6 +12,8 @@ const {
   title = site.title,
   description = site.description,
 } = Astro.props;
+
+const ogImage = new URL(withBase('assets/logo/header.png'), Astro.site);
 ---
 
 <!doctype html>
@@ -24,14 +27,14 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={site.ogImage} />
+    <meta property="og:image" content={ogImage.href} />
     <meta property="og:locale" content="pl_PL" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/png" href={withBase('favicon.png')} />
 
     <title>{title}</title>
   </head>

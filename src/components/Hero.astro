@@ -1,6 +1,7 @@
 ---
 import { hero } from '../data/content';
 import Button from './ui/Button.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <section
@@ -69,7 +70,7 @@ import Button from './ui/Button.astro';
       <div class="relative lg:col-span-4 lg:flex lg:justify-end">
         <div class="reveal relative" data-reveal data-reveal-delay="400">
           <img
-            src="/assets/logo/symbol.png"
+            src={withBase('assets/logo/symbol.png')}
             alt=""
             class="mx-auto h-48 w-48 opacity-90 md:h-64 md:w-64 lg:mx-0"
             width="256"

@@ -1,5 +1,6 @@
 ---
 import { navigation, ctaLabel } from '../data/navigation';
+import { withBase } from '../utils/withBase';
 ---
 
 <header
@@ -12,14 +13,14 @@ import { navigation, ctaLabel } from '../data/navigation';
   >
     <a href="#" class="relative z-10 shrink-0" aria-label="Mental Craft — strona główna">
       <img
-        src="/assets/logo/header.png"
+        src={withBase('assets/logo/header.png')}
         alt="Mental Craft"
         class="hidden h-8 w-auto md:block"
         width="200"
         height="32"
       />
       <img
-        src="/assets/logo/symbol.png"
+        src={withBase('assets/logo/symbol.png')}
         alt="Mental Craft"
         class="h-9 w-9 md:hidden"
         width="36"

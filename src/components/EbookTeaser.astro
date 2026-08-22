@@ -1,6 +1,7 @@
 ---
 import { ebookTeaser } from '../data/offer';
 import SectionLabel from './ui/SectionLabel.astro';
+import { withBase } from '../utils/withBase';
 ---
 
 <section
@@ -26,7 +27,7 @@ import SectionLabel from './ui/SectionLabel.astro';
             class="relative flex h-full flex-col justify-between border border-mc-white/10 bg-mc-surface p-8"
           >
             <img
-              src="/assets/logo/symbol.png"
+              src={withBase('assets/logo/symbol.png')}
               alt=""
               class="h-16 w-16 opacity-80"
               width="64"
