@@ -1,0 +1,102 @@
+---
+import { hero } from '../data/content';
+import Button from './ui/Button.astro';
+---
+
+<section
+  id="hero"
+  class="relative flex min-h-screen items-end overflow-hidden pb-16 pt-32 md:items-center md:pb-0 md:pt-24"
+  aria-label="Mental Craft — strona główna"
+>
+  <!-- Ambient geometry -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div
+      class="geo-ring absolute -right-32 top-1/4 h-[500px] w-[500px] opacity-20 md:h-[700px] md:w-[700px]"
+    >
+    </div>
+    <div
+      class="geo-ring absolute -left-48 bottom-0 h-[400px] w-[400px] opacity-10"
+    >
+    </div>
+    <div
+      class="absolute right-0 top-0 h-[60vh] w-1/2 bg-[radial-gradient(ellipse_at_top_right,var(--mc-orange-glow),transparent_70%)]"
+    >
+    </div>
+    <div class="geo-line absolute left-0 top-1/3 w-full opacity-30"></div>
+    <div
+      class="absolute bottom-32 left-10 h-px w-32 bg-mc-orange opacity-60 md:left-20"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+    <div class="grid items-end gap-12 lg:grid-cols-12 lg:gap-8">
+      <div class="lg:col-span-8">
+        <p
+          class="reveal mb-6 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange"
+          data-reveal
+        >
+          Przemysław Duda
+        </p>
+
+        <h1
+          class="reveal font-display text-[clamp(2.75rem,8vw,7rem)] font-extrabold uppercase leading-[0.92] tracking-tight"
+          data-reveal
+          data-reveal-delay="100"
+        >
+          {hero.headline}
+          <span class="block text-mc-muted">{hero.headlineAccent}</span>
+        </h1>
+
+        <p
+          class="reveal mt-8 max-w-xl text-lg leading-relaxed text-mc-muted md:text-xl"
+          data-reveal
+          data-reveal-delay="200"
+        >
+          {hero.subline}
+        </p>
+
+        <div
+          class="reveal mt-10 flex flex-wrap gap-4"
+          data-reveal
+          data-reveal-delay="300"
+        >
+          <Button href="#metoda" variant="primary">{hero.ctaPrimary}</Button>
+          <Button href="#kontakt" variant="secondary">{hero.ctaSecondary}</Button>
+        </div>
+      </div>
+
+      <div class="relative lg:col-span-4 lg:flex lg:justify-end">
+        <div class="reveal relative" data-reveal data-reveal-delay="400">
+          <img
+            src="/assets/logo/symbol.png"
+            alt=""
+            class="mx-auto h-48 w-48 opacity-90 md:h-64 md:w-64 lg:mx-0"
+            width="256"
+            height="256"
+            aria-hidden="true"
+          />
+          <div
+            class="absolute inset-0 -z-10 scale-150 bg-[radial-gradient(circle,var(--mc-orange-glow-strong),transparent_60%)]"
+            aria-hidden="true"
+          >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="reveal mt-20 flex items-center gap-6 md:mt-32"
+      data-reveal
+      data-reveal-delay="500"
+    >
+      <div class="h-px flex-1 bg-mc-white/10"></div>
+      <p
+        class="font-display text-sm font-bold uppercase tracking-[0.35em] text-mc-white/50 md:text-base"
+      >
+        POCZUJ. ZROZUM. ZMIEŃ.
+      </p>
+      <div class="h-px flex-1 bg-mc-white/10"></div>
+    </div>
+  </div>
+</section>

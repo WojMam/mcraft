@@ -1,0 +1,61 @@
+---
+import { stuckMoment } from '../data/content';
+---
+
+<section
+  id="problem"
+  class="relative flex min-h-screen items-center overflow-hidden py-24"
+  aria-labelledby="stuck-heading"
+>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div
+      class="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(232,93,4,0.04),transparent_65%)]"
+    >
+    </div>
+  </div>
+
+  <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+    <h2
+      id="stuck-heading"
+      class="reveal font-display text-[clamp(4rem,18vw,14rem)] font-extrabold uppercase leading-none tracking-tighter text-mc-white/5"
+      data-reveal
+    >
+      {stuckMoment.headline}
+    </h2>
+
+    <div class="relative -mt-[clamp(3rem,12vw,9rem)] md:-mt-[clamp(4rem,14vw,11rem)]">
+      <p
+        class="reveal max-w-3xl font-display text-2xl font-bold leading-snug text-mc-white md:text-4xl lg:text-5xl"
+        data-reveal
+        data-reveal-delay="100"
+      >
+        {stuckMoment.lead}
+      </p>
+
+      <ul class="mt-16 space-y-0 md:mt-24" role="list">
+        {
+          stuckMoment.situations.map((situation, i) => (
+            <li
+              class="reveal group border-t border-mc-white/10 py-8 md:py-10"
+              data-reveal
+              data-reveal-delay={150 + i * 80}
+            >
+              <div class="flex items-start gap-6 md:gap-10">
+                <span
+                  class="mt-1 font-display text-sm font-bold tabular-nums text-mc-orange"
+                  aria-hidden="true"
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p class="max-w-2xl text-lg leading-relaxed text-mc-muted transition-colors group-hover:text-mc-white md:text-xl">
+                  {situation}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+        <li class="border-t border-mc-white/10" aria-hidden="true"></li>
+      </ul>
+    </div>
+  </div>
+</section>

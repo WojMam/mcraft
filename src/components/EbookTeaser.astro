@@ -1,0 +1,79 @@
+---
+import { ebookTeaser } from '../data/offer';
+import SectionLabel from './ui/SectionLabel.astro';
+---
+
+<section
+  id="workbook"
+  class="relative overflow-hidden border-t border-mc-white/5 py-24 md:py-32"
+  aria-labelledby="workbook-heading"
+>
+  <div class="mx-auto max-w-7xl px-6 lg:px-10">
+    <div class="grid items-center gap-16 lg:grid-cols-12">
+      <!-- CONCEPT PLACEHOLDER mockup -->
+      <div class="reveal lg:col-span-5" data-reveal>
+        <div
+          class="relative mx-auto aspect-[3/4] max-w-xs"
+          data-workbook-mockup
+          aria-label="Wizualizacja koncepcyjna okładki workbooka"
+        >
+          <div
+            class="absolute inset-0 bg-mc-surface-2 shadow-2xl"
+            style="transform: rotate(-2deg);"
+          >
+          </div>
+          <div
+            class="relative flex h-full flex-col justify-between border border-mc-white/10 bg-mc-surface p-8"
+          >
+            <img
+              src="/assets/logo/symbol.png"
+              alt=""
+              class="h-16 w-16 opacity-80"
+              width="64"
+              height="64"
+              aria-hidden="true"
+            />
+            <div>
+              <p
+                class="font-display text-xs font-bold uppercase tracking-[0.3em] text-mc-orange"
+              >
+                Mental Craft
+              </p>
+              <p
+                class="mt-3 font-display text-2xl font-extrabold uppercase leading-tight"
+              >
+                Podręcznik<br />warsztatowy
+              </p>
+            </div>
+            <div class="h-1 w-12 bg-mc-orange"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 lg:col-start-7">
+        <div class="reveal" data-reveal data-reveal-delay="100">
+          <SectionLabel text={ebookTeaser.label} />
+          <h2
+            id="workbook-heading"
+            class="mt-6 font-display text-4xl font-extrabold uppercase leading-tight md:text-5xl"
+          >
+            {ebookTeaser.headline}
+          </h2>
+          <p class="mt-6 max-w-lg text-lg leading-relaxed text-mc-muted">
+            {ebookTeaser.description}
+          </p>
+          <button
+            type="button"
+            class="mt-10 cursor-default border border-mc-white/20 px-8 py-4 font-display text-xs font-bold uppercase tracking-widest text-mc-muted"
+            disabled
+            aria-disabled="true"
+          >
+            {ebookTeaser.cta}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT PLACEHOLDER: workbook cover mockup for layout preview only -->
