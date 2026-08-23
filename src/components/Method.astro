@@ -3,56 +3,125 @@ import { methodSteps } from '../data/method';
 import { site } from '../data/site';
 ---
 
-<section id="metoda" aria-label="Metoda Mental Craft">
-  {
-    methodSteps.map((step, index) => (
-      <article
-        class="relative flex min-h-screen items-center overflow-hidden py-24"
-        aria-labelledby={`method-${step.id}`}
+<section id="metoda" class="method-section relative" aria-label="Metoda Mental Craft">
+  <!-- Scroll track = container height only; sticky lives inside (no +100vh dead zone) -->
+  <div class="relative hidden h-[200vh] lg:block" data-method-sticky data-method-track>
+    <div
+      class="sticky flex min-h-[32rem] items-center overflow-hidden"
+      style="top: var(--method-sticky-top); height: calc(100svh - var(--method-sticky-top));"
+      data-method-viewport
+    >
+      <div
+        class="pointer-events-none absolute inset-0 opacity-0"
+        data-method-ambient
+        aria-hidden="true"
       >
-        <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-          {step.accent === 'left' && (
-            <div class="absolute -left-40 top-1/2 h-[600px] w-[600px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,var(--mc-orange-glow),transparent_70%)]" />
-          )}
-          {step.accent === 'center' && (
-            <div class="geo-line absolute left-0 top-1/2 w-full opacity-20" />
-          )}
-          {step.accent === 'right' && (
-            <div class="absolute -right-32 bottom-0 h-[500px] w-[500px] bg-[radial-gradient(circle_at_bottom_right,rgba(232,93,4,0.08),transparent_60%)]" />
-          )}
-          <span class="absolute right-6 top-1/2 -translate-y-1/2 font-display text-[20vw] font-extrabold leading-none text-mc-white/[0.02] md:right-16">
-            {String(index + 1).padStart(2, '0')}
-          </span>
+        <div
+          class="absolute -left-36 top-[42%] h-[560px] w-[560px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(232,93,4,0.11),transparent_68%)]"
+        >
         </div>
+      </div>
 
-        <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
-          {index === 0 && (
-            <p
-              class="reveal mb-8 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange"
-              data-reveal
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div class="geo-line absolute left-0 top-1/2 w-full opacity-10"></div>
+      </div>
+
+      <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+        <p
+          class="method-tagline mb-6 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange"
+          data-method-tagline
+        >
+          {site.tagline}
+        </p>
+
+        {
+          methodSteps.map((step, index) => (
+            <div
+              class="method-panel absolute inset-x-6 top-1/2 lg:inset-x-10"
+              data-method-panel={index}
+              aria-hidden={index === 0 ? 'false' : 'true'}
             >
-              {site.tagline}
-            </p>
-          )}
+              <span
+                class="method-panel__num pointer-events-none absolute -right-2 top-1/2 -translate-y-1/2 font-display text-[18vw] font-extrabold leading-none text-mc-white/[0.03] xl:right-0"
+                aria-hidden="true"
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <h2 class="font-display text-[clamp(4rem,11vw,9rem)] font-extrabold uppercase leading-[0.9] tracking-tighter">
+                {step.title}
+              </h2>
+              <p class="mt-8 max-w-xl text-xl leading-relaxed text-mc-muted md:mt-10 md:text-2xl">
+                {step.description}
+              </p>
+            </div>
+          ))
+        }
 
-          <h2
-            id={`method-${step.id}`}
-            class="reveal font-display text-[clamp(3.5rem,12vw,10rem)] font-extrabold uppercase leading-[0.9] tracking-tighter"
-            data-reveal
-            data-reveal-delay="100"
-          >
-            {step.title}
+        <div class="invisible pointer-events-none" aria-hidden="true">
+          <h2 class="font-display text-[clamp(4rem,11vw,9rem)] font-extrabold uppercase leading-[0.9]">
+            {methodSteps[0].title}
           </h2>
-
-          <p
-            class="reveal mt-10 max-w-xl text-xl leading-relaxed text-mc-muted md:mt-14 md:max-w-2xl md:text-2xl"
-            data-reveal
-            data-reveal-delay="200"
-          >
-            {step.description}
-          </p>
+          <p class="mt-8 max-w-xl text-xl md:mt-10 md:text-2xl">{methodSteps[0].description}</p>
         </div>
-      </article>
-    ))
-  }
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:hidden" data-method-mobile>
+    {
+      methodSteps.map((step, index) => (
+        <article
+          class="method-mobile-step relative flex min-h-[46vh] items-center overflow-hidden py-10"
+          aria-labelledby={`method-m-${step.id}`}
+          data-method-mobile-step={index}
+        >
+          <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+            <span class="absolute right-6 top-1/2 -translate-y-1/2 font-display text-[28vw] font-extrabold leading-none text-mc-white/[0.03]">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+          </div>
+          <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+            {index === 0 && (
+              <p class="mb-6 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange">
+                {site.tagline}
+              </p>
+            )}
+            <h2
+              id={`method-m-${step.id}`}
+              class="font-display text-[clamp(3.25rem,14vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-tighter"
+            >
+              {step.title}
+            </h2>
+            <p class="mt-8 max-w-xl text-lg leading-relaxed text-mc-muted md:text-xl">
+              {step.description}
+            </p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
 </section>
+
+<style>
+  .method-section {
+    --method-sticky-top: 4.5rem;
+    margin-top: clamp(-11rem, -26vh, -5rem);
+  }
+
+  .method-panel {
+    opacity: 0;
+    transform: translateY(calc(-50% + 18px)) scale(0.985);
+    will-change: opacity, transform;
+  }
+
+  .method-panel.is-active {
+    pointer-events: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .method-panel,
+    [data-method-ambient] {
+      transition: opacity 0.35s ease !important;
+    }
+  }
+</style>

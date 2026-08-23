@@ -1,0 +1,102 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { withBase } from '../../utils/withBase';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  imgClass?: string;
+  fade?: 'left' | 'right' | 'bottom' | 'all' | 'none';
+  /** Minimal slot — no box, no glow; for hero portrait placeholder only. */
+  bare?: boolean;
+  tone?: 'neutral' | 'warm';
+}
+
+const {
+  src,
+  alt,
+  class: className = '',
+  imgClass = '',
+  fade = 'all',
+  bare = false,
+  tone = 'warm',
+} = Astro.props;
+
+const absolutePath = path.join(process.cwd(), 'public', src);
+const hasPhoto = fs.existsSync(absolutePath);
+
+const fadeClass =
+  fade === 'left'
+    ? 'bg-gradient-to-r from-mc-black from-0% via-mc-black/85 via-35% to-transparent to-70%'
+    : fade === 'right'
+      ? 'bg-gradient-to-l from-mc-black via-mc-black/50 to-transparent'
+      : fade === 'bottom'
+        ? 'bg-gradient-to-t from-mc-black via-mc-black/55 to-transparent'
+        : fade === 'all'
+          ? 'bg-[linear-gradient(to_right,rgba(10,10,10,0.75)_0%,transparent_30%,transparent_70%,rgba(10,10,10,0.35)_100%),linear-gradient(to_top,rgba(10,10,10,0.92)_0%,transparent_42%)]'
+          : '';
+---
+
+<div
+  class:list={[
+    'relative',
+    bare ? 'bg-transparent' : 'overflow-hidden bg-mc-surface',
+    className,
+  ]}
+>
+  {
+    hasPhoto ? (
+      <img
+        src={withBase(src)}
+        alt={alt}
+        class:list={['h-full w-full object-cover', imgClass]}
+        loading="lazy"
+        decoding="async"
+      />
+    ) : bare ? (
+      <div class="absolute inset-0" aria-hidden="true">
+        <img
+          src={withBase('assets/logo/symbol.png')}
+          alt=""
+          class="absolute bottom-[14%] left-1/2 h-12 w-12 -translate-x-1/2 opacity-20 md:h-14 md:w-14 md:opacity-25"
+          width="56"
+          height="56"
+        />
+      </div>
+    ) : (
+      <div
+        class="absolute inset-0 flex items-end justify-center bg-[linear-gradient(165deg,#141414_0%,#0a0a0a_100%)]"
+        aria-hidden="true"
+      >
+        {
+          tone === 'warm' && (
+            <div
+              class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgba(232,93,4,0.07),transparent_70%)]"
+              aria-hidden="true"
+            />
+          )
+        }
+        <div class="pointer-events-none absolute inset-0 opacity-25">
+          <div class="geo-ring absolute left-1/2 top-[32%] h-[68%] w-[68%] -translate-x-1/2 -translate-y-1/4" />
+          <div class="geo-ring absolute left-1/2 top-[32%] h-[42%] w-[42%] -translate-x-1/2 -translate-y-1/4" />
+        </div>
+        <img
+          src={withBase('assets/logo/symbol.png')}
+          alt=""
+          class="relative z-10 mb-[16%] h-14 w-14 opacity-35 md:h-16 md:w-16"
+          width="72"
+          height="72"
+          aria-hidden="true"
+        />
+      </div>
+    )
+  }
+
+  {
+    !bare && fade !== 'none' && (
+      <div class:list={['pointer-events-none absolute inset-0', fadeClass]} aria-hidden="true" />
+    )
+  }
+</div>

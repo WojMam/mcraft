@@ -5,7 +5,7 @@ import SectionLabel from './ui/SectionLabel.astro';
 
 <section
   id="idea"
-  class="relative overflow-hidden py-32 md:py-40"
+  class="relative overflow-hidden pt-24 pb-6 md:pt-28 md:pb-8"
   aria-labelledby="idea-heading"
 >
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -15,8 +15,7 @@ import SectionLabel from './ui/SectionLabel.astro';
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="0.5"
-      ></circle>
+      <circle cx="100" cy="100" r="95" stroke="currentColor" stroke-width="0.5"></circle>
       <polygon
         points="100,20 180,160 20,160"
         stroke="currentColor"
@@ -28,24 +27,29 @@ import SectionLabel from './ui/SectionLabel.astro';
   </div>
 
   <div class="mx-auto max-w-7xl px-6 lg:px-10">
-    <div class="grid gap-16 lg:grid-cols-12 lg:gap-8">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
       <div class="lg:col-span-5">
         <div class="reveal lg:sticky lg:top-32" data-reveal>
           <SectionLabel text={idea.label} />
           <h2
             id="idea-heading"
-            class="mt-6 font-display text-4xl font-extrabold uppercase leading-tight tracking-tight md:text-5xl lg:text-6xl"
+            class="mt-6 font-display text-4xl font-extrabold uppercase leading-tight tracking-tight md:text-5xl lg:text-[3.25rem]"
           >
             {idea.headline}
           </h2>
         </div>
       </div>
 
-      <div class="space-y-10 lg:col-span-6 lg:col-start-7">
+      <div class="space-y-8 lg:col-span-6 lg:col-start-7">
         {
           idea.paragraphs.map((paragraph, i) => (
             <p
-              class="reveal text-lg leading-relaxed text-mc-muted md:text-xl"
+              class:list={[
+                'reveal text-lg leading-relaxed md:text-xl',
+                i === idea.paragraphs.length - 1
+                  ? 'border-l-2 border-mc-orange pl-6 font-medium text-mc-white'
+                  : 'text-mc-muted',
+              ]}
               data-reveal
               data-reveal-delay={i * 100}
             >
