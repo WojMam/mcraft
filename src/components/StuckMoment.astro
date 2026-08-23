@@ -17,7 +17,7 @@ import { stuckMoment } from '../data/content';
   <!-- Background typography — anchored left, slight right bleed -->
   <h2
     id="stuck-heading"
-    class="pointer-events-none absolute left-4 top-[16%] z-0 max-w-[96vw] font-display text-[clamp(3rem,10.5vw,9.5rem)] font-extrabold uppercase leading-none tracking-tighter text-mc-white/[0.07] md:left-8 lg:top-[18%]"
+    class="type-signature pointer-events-none absolute left-4 top-[16%] z-0 max-w-[96vw] text-[clamp(3rem,10.5vw,9.5rem)] uppercase leading-none tracking-tighter text-mc-white/[0.07] md:left-8 lg:top-[18%]"
     aria-hidden="true"
   >
     {stuckMoment.headline}
@@ -26,7 +26,7 @@ import { stuckMoment } from '../data/content';
   <div class="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
     <div class="relative pt-[clamp(5rem,14vw,9rem)] md:pt-[clamp(6rem,16vw,10rem)]">
       <p
-        class="reveal max-w-3xl font-display text-2xl font-bold leading-snug text-mc-white md:text-4xl lg:text-5xl"
+        class="reveal max-w-3xl text-2xl font-medium leading-snug text-mc-white md:text-4xl lg:text-5xl"
         data-reveal
       >
         {stuckMoment.lead}
@@ -42,7 +42,7 @@ import { stuckMoment } from '../data/content';
             >
               <div class="flex items-start gap-6 md:gap-10">
                 <span
-                  class="mt-1 font-display text-sm font-bold tabular-nums text-mc-orange"
+                  class="type-ui mt-1 text-sm tabular-nums text-mc-orange"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, '0')}

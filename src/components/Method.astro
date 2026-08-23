@@ -28,7 +28,7 @@ import { site } from '../data/site';
 
       <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <p
-          class="method-tagline mb-6 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange"
+          class="type-eyebrow method-tagline mb-6 text-xs uppercase tracking-[0.4em] text-mc-orange"
           data-method-tagline
         >
           {site.tagline}
@@ -42,12 +42,12 @@ import { site } from '../data/site';
               aria-hidden={index === 0 ? 'false' : 'true'}
             >
               <span
-                class="method-panel__num pointer-events-none absolute -right-2 top-1/2 -translate-y-1/2 font-display text-[18vw] font-extrabold leading-none text-mc-white/[0.03] xl:right-0"
+                class="type-signature method-panel__num pointer-events-none absolute -right-2 top-1/2 -translate-y-1/2 text-[18vw] leading-none text-mc-white/[0.03] xl:right-0"
                 aria-hidden="true"
               >
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <h2 class="font-display text-[clamp(4rem,11vw,9rem)] font-extrabold uppercase leading-[0.9] tracking-tighter">
+              <h2 class="type-signature text-[clamp(4rem,11vw,9rem)] uppercase leading-[0.9] tracking-tighter">
                 {step.title}
               </h2>
               <p class="mt-8 max-w-xl text-xl leading-relaxed text-mc-muted md:mt-10 md:text-2xl">
@@ -58,7 +58,7 @@ import { site } from '../data/site';
         }
 
         <div class="invisible pointer-events-none" aria-hidden="true">
-          <h2 class="font-display text-[clamp(4rem,11vw,9rem)] font-extrabold uppercase leading-[0.9]">
+          <h2 class="type-signature text-[clamp(4rem,11vw,9rem)] uppercase leading-[0.9]">
             {methodSteps[0].title}
           </h2>
           <p class="mt-8 max-w-xl text-xl md:mt-10 md:text-2xl">{methodSteps[0].description}</p>
@@ -76,19 +76,19 @@ import { site } from '../data/site';
           data-method-mobile-step={index}
         >
           <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-            <span class="absolute right-6 top-1/2 -translate-y-1/2 font-display text-[28vw] font-extrabold leading-none text-mc-white/[0.03]">
+            <span class="type-signature absolute right-6 top-1/2 -translate-y-1/2 text-[28vw] leading-none text-mc-white/[0.03]">
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
           <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
             {index === 0 && (
-              <p class="mb-6 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange">
+              <p class="type-eyebrow mb-6 text-xs uppercase tracking-[0.4em] text-mc-orange">
                 {site.tagline}
               </p>
             )}
             <h2
               id={`method-m-${step.id}`}
-              class="font-display text-[clamp(3.25rem,14vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-tighter"
+              class="type-signature text-[clamp(3.25rem,14vw,6rem)] uppercase leading-[0.9] tracking-tighter"
             >
               {step.title}
             </h2>

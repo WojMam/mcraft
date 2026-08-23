@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource/syne/600.css";
 @import "@fontsource/syne/700.css";
 @import "@fontsource/syne/800.css";
 @import "@fontsource/inter/400.css";
@@ -13,13 +14,22 @@
   --color-mc-orange: #e85d04;
   --color-mc-orange-dim: #c44d03;
 
-  --font-display: "Syne", system-ui, sans-serif;
+  /* Same family: Syne widens as weight increases (no wdth axis). */
+  --font-signature: "Syne", system-ui, sans-serif;
+  --font-editorial: "Syne", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
+
+  /* Back-compat alias used by UI / eyebrows / buttons */
+  --font-display: "Syne", system-ui, sans-serif;
 }
 
 :root {
   --mc-orange-glow: rgba(232, 93, 4, 0.15);
   --mc-orange-glow-strong: rgba(232, 93, 4, 0.35);
+
+  --font-display-signature: var(--font-signature);
+  --font-display-editorial: var(--font-editorial);
+  --font-ui: var(--font-display);
 }
 
 html {
@@ -56,6 +66,33 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-mc-orange);
   outline-offset: 3px;
+}
+
+/* --- Typography roles (Syne: lighter = naturally narrower) --- */
+
+.type-signature {
+  font-family: var(--font-display-signature);
+  font-weight: 800;
+}
+
+.type-hero {
+  font-family: var(--font-display-signature);
+  font-weight: 700;
+}
+
+.type-editorial {
+  font-family: var(--font-display-editorial);
+  font-weight: 600;
+}
+
+.type-eyebrow {
+  font-family: var(--font-ui);
+  font-weight: 700;
+}
+
+.type-ui {
+  font-family: var(--font-ui);
+  font-weight: 700;
 }
 
 .reveal {

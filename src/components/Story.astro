@@ -31,10 +31,10 @@ import PhotoFrame from './ui/PhotoFrame.astro';
       <SectionLabel text={story.label} />
       <h2
         id="story-heading"
-        class="mt-6 font-display text-4xl font-extrabold uppercase leading-tight tracking-tight md:text-6xl lg:text-7xl"
+        class="type-editorial mt-6 max-w-5xl text-[clamp(2rem,5.5vw,4.25rem)] uppercase leading-[1.05] tracking-tight text-balance"
       >
         {story.headline}
-        <span class="mt-2 block text-mc-orange">{story.headlineAccent}</span>
+        <span class="type-signature mt-2 block tracking-tighter text-mc-orange">{story.headlineAccent}</span>
       </h2>
     </div>
 
@@ -91,7 +91,7 @@ import PhotoFrame from './ui/PhotoFrame.astro';
           {
             story.pillars.map((pillar) => (
               <div class="border-t border-mc-white/10 py-5">
-                <p class="font-display text-xl font-extrabold uppercase tracking-wide text-mc-white">
+                <p class="type-editorial text-xl uppercase tracking-[0.04em] text-mc-white">
                   {pillar.label}
                 </p>
                 <p class="mt-2 text-sm leading-relaxed text-mc-muted">{pillar.detail}</p>
