@@ -19,11 +19,11 @@ export const stuckMoment = {
 } as const;
 
 export const idea = {
-  label: 'Idea',
-  headline: 'Rozwój to rzemiosło, którego można się nauczyć.',
+  label: 'Mental Craft',
+  headline: 'Refleksja, która prowadzi do ruchu.',
   paragraphs: [
-    'Mental Craft nie obiecuje magicznej transformacji. To proces — świadome budowanie zmiany krok po kroku.',
-    'Łączy pracę nad emocjami, sposobem myślenia i działaniem. Nie teoria zamiast praktyki. Nie motywacja zamiast kierunku.',
-    'To podejście dla ludzi, którzy wiedzą, jak funkcjonować pod presją — i szukają kolejnego poziomu, nie ratunku.',
+    'Mental Craft łączy rozmowę, świadomość i działanie. Pracujesz nad perspektywą — i od razu przekładasz wnioski na konkretne kroki.',
+    'W procesie spotykają się głowa i ciało: uważność, zmiana sposobu myślenia oraz ruch, który utrwala to, czego sama refleksja nie domyka.',
+    'Nie chodzi tylko o to, żeby zrozumieć, co chcesz zmienić. Chodzi o to, żeby zacząć działać inaczej.',
   ],
 } as const;

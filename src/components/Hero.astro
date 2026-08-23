@@ -1,47 +1,34 @@
 ---
 import { hero } from '../data/content';
+import { photoSlots } from '../data/photos';
 import Button from './ui/Button.astro';
-import { withBase } from '../utils/withBase';
+import PhotoFrame from './ui/PhotoFrame.astro';
 ---
 
 <section
   id="hero"
-  class="relative flex min-h-screen items-end overflow-hidden pb-16 pt-32 md:items-center md:pb-0 md:pt-24"
+  class="hero-section relative flex min-h-[100svh] items-end overflow-hidden pb-14 pt-28 md:items-center md:pb-0 md:pt-24"
   aria-label="Mental Craft — strona główna"
 >
-  <!-- Ambient geometry -->
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+  <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
     <div
-      class="geo-ring absolute -right-32 top-1/4 h-[500px] w-[500px] opacity-20 md:h-[700px] md:w-[700px]"
-    >
-    </div>
-    <div
-      class="geo-ring absolute -left-48 bottom-0 h-[400px] w-[400px] opacity-10"
-    >
-    </div>
-    <div
-      class="absolute right-0 top-0 h-[60vh] w-1/2 bg-[radial-gradient(ellipse_at_top_right,var(--mc-orange-glow),transparent_70%)]"
-    >
-    </div>
-    <div class="geo-line absolute left-0 top-1/3 w-full opacity-30"></div>
-    <div
-      class="absolute bottom-32 left-10 h-px w-32 bg-mc-orange opacity-60 md:left-20"
+      class="geo-ring absolute -right-32 top-1/4 h-[500px] w-[500px] opacity-15 md:h-[700px] md:w-[700px]"
     >
     </div>
   </div>
 
-  <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
-    <div class="grid items-end gap-12 lg:grid-cols-12 lg:gap-8">
-      <div class="lg:col-span-8">
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
+    <div class="grid min-w-0 grid-cols-1 items-end gap-8 lg:grid-cols-12 lg:gap-6">
+      <div class="relative min-w-0 lg:col-span-7">
         <p
-          class="reveal mb-6 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange"
+          class="reveal mb-5 font-display text-xs font-bold uppercase tracking-[0.4em] text-mc-orange"
           data-reveal
         >
           Przemysław Duda
         </p>
 
         <h1
-          class="reveal font-display text-[clamp(2.75rem,8vw,7rem)] font-extrabold uppercase leading-[0.92] tracking-tight"
+          class="reveal max-w-full font-display text-[clamp(2.125rem,10vw,6.5rem)] font-extrabold uppercase leading-[0.95] tracking-tight sm:text-[clamp(2.75rem,7.5vw,6.5rem)] sm:leading-[0.92]"
           data-reveal
           data-reveal-delay="100"
         >
@@ -50,7 +37,7 @@ import { withBase } from '../utils/withBase';
         </h1>
 
         <p
-          class="reveal mt-8 max-w-xl text-lg leading-relaxed text-mc-muted md:text-xl"
+          class="reveal mt-7 max-w-xl text-base leading-relaxed text-mc-muted sm:text-lg md:text-xl"
           data-reveal
           data-reveal-delay="200"
         >
@@ -58,7 +45,7 @@ import { withBase } from '../utils/withBase';
         </p>
 
         <div
-          class="reveal mt-10 flex flex-wrap gap-4"
+          class="reveal mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
           data-reveal
           data-reveal-delay="300"
         >
@@ -67,29 +54,28 @@ import { withBase } from '../utils/withBase';
         </div>
       </div>
 
-      <div class="relative lg:col-span-4 lg:flex lg:justify-end">
-        <div class="reveal relative" data-reveal data-reveal-delay="400">
-          <img
-            src={withBase('assets/logo/symbol.png')}
-            alt=""
-            class="mx-auto h-48 w-48 opacity-90 md:h-64 md:w-64 lg:mx-0"
-            width="256"
-            height="256"
-            aria-hidden="true"
+      <div class="relative min-w-0 lg:col-span-5">
+        <div
+          class="reveal relative mx-auto w-full max-w-[12.5rem] sm:max-w-xs lg:mx-0 lg:max-w-none"
+          data-reveal
+          data-reveal-delay="200"
+        >
+          <PhotoFrame
+            src={photoSlots.heroPortrait.src}
+            alt={photoSlots.heroPortrait.alt}
+            bare={true}
+            fade="none"
+            class="aspect-[4/5] w-full"
+            imgClass="object-top"
           />
-          <div
-            class="absolute inset-0 -z-10 scale-150 bg-[radial-gradient(circle,var(--mc-orange-glow-strong),transparent_60%)]"
-            aria-hidden="true"
-          >
-          </div>
         </div>
       </div>
     </div>
 
     <div
-      class="reveal mt-20 flex items-center gap-6 md:mt-32"
+      class="reveal mt-14 flex items-center gap-6 md:mt-20"
       data-reveal
-      data-reveal-delay="500"
+      data-reveal-delay="400"
     >
       <div class="h-px flex-1 bg-mc-white/10"></div>
       <p
@@ -101,3 +87,66 @@ import { withBase } from '../utils/withBase';
     </div>
   </div>
 </section>
+
+<style>
+  /* Ambient glow — full-section radial, center far right; no sub-element bounding box */
+  .hero-section::before,
+  .hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-section::before {
+    background: radial-gradient(
+      ellipse 130% 115% at 84% 47%,
+      rgba(234, 90, 0, 0.065) 0%,
+      rgba(180, 70, 8, 0.032) 16%,
+      rgba(90, 35, 8, 0.014) 32%,
+      rgba(30, 12, 4, 0.005) 46%,
+      transparent 64%
+    );
+  }
+
+  .hero-section::after {
+    background: radial-gradient(
+      ellipse 95% 85% at 90% 40%,
+      rgba(232, 93, 4, 0.035) 0%,
+      rgba(120, 45, 8, 0.014) 24%,
+      transparent 58%
+    );
+  }
+
+  @media (max-width: 1279px) {
+    .hero-section::before {
+      background: radial-gradient(
+        ellipse 125% 110% at 82% 48%,
+        rgba(234, 90, 0, 0.055) 0%,
+        rgba(180, 70, 8, 0.026) 18%,
+        rgba(90, 35, 8, 0.01) 34%,
+        transparent 66%
+      );
+    }
+
+    .hero-section::after {
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-section::before {
+      background: radial-gradient(
+        ellipse 110% 95% at 88% 54%,
+        rgba(234, 90, 0, 0.03) 0%,
+        rgba(150, 55, 10, 0.014) 20%,
+        transparent 58%
+      );
+    }
+
+    .hero-section::after {
+      display: none;
+    }
+  }
+</style>

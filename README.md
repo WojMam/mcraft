@@ -1,6 +1,6 @@
 # Mental Craft — Alpha One-Pager
 
-Pierwsza wersja alfa strony marki **Mental Craft — Przemysław Duda**.
+Strona marki **Mental Craft — Przemysław Duda**.
 
 Kierunek wizualny: **Controlled Fire Editorial** — ciemna, editorialowa estetyka personal brand z oszczędnym pomarańczowym akcentem.
 
@@ -18,59 +18,72 @@ npm run build    # produkcyjny build do dist/
 npm run preview  # podgląd buildu
 ```
 
+GitHub Pages: `https://wojmam.github.io/mcraft/` (`astro.config.mjs` → `base: '/mcraft'`).
+
 ## Project structure
 
 ```
 src/
   components/     # Sekcje strony (Hero, Method, Story, Offer…)
-  data/           # Treści łatwe do edycji (site, offer, story, content…)
+  data/           # Treści łatwe do edycji
   layouts/        # Layout.astro — head, SEO, OG
-  pages/          # index.astro — składanie sekcji
-  scripts/        # main.ts — menu, scroll reveal, formularz
+  pages/          # index.astro
+  scripts/        # main.ts — menu, reveal, method sticky, form
   styles/         # global.css — Tailwind + tokeny marki
+  utils/          # withBase() — ścieżki pod GitHub Pages
 public/
-  assets/logo/    # Oficjalne logo PNG (skopiowane z assets/logo/)
+  assets/logo/    # Oficjalne logo PNG
+  assets/photos/  # Czyste zdjęcia klienta (obecnie puste — slots gotowe)
 assets/logo/      # Materiały źródłowe logo (nie modyfikować)
-exemplary/        # Materiały referencyjne klienta (nie modyfikować)
 ```
 
 ## Content editing
-
-Najczęściej edytowane pliki:
 
 | Plik | Zawartość |
 |------|-----------|
 | `src/data/site.ts` | Meta, SEO, tagline |
 | `src/data/content.ts` | Hero, StuckMoment, Idea |
-| `src/data/method.ts` | Kroki POCZUJ / ZROZUM / ZMIEŃ |
+| `src/data/method.ts` | POCZUJ / ZROZUM / ZMIEŃ |
 | `src/data/story.ts` | Historia Przemysława |
 | `src/data/offer.ts` | Oferta 1:1, workbook, B2B, formularz |
+| `src/data/photos.ts` | Ścieżki slotów zdjęć |
 | `src/data/navigation.ts` | Nawigacja i CTA |
 
-## Assets
+## Photos (Iteration 2)
 
-**Logo** — wyłącznie oficjalne PNG z `assets/logo/`:
+W repozytorium **nie ma czystych fotografii** Przemysława (folder `exemplary/` zawierał wyłącznie kompozycje social-media — usunięty z repo, nie używany jako zdjęcia).
+
+Layouty Hero / Story / Final CTA są **gotowe na zdjęcia**. Wystarczy wrzucić pliki:
+
+| Plik w `public/assets/photos/` | Miejsce |
+|--------------------------------|---------|
+| `portrait-hero.jpg` | Hero (prawa strona) |
+| `story-outdoor.jpg` | Story — szeroki kadr |
+| `story-activity.jpg` | Story — kadr pionowy |
+| `portrait-cta.jpg` | Final CTA (tło desktop) |
+
+Bez plików slot pokazuje editorial placeholder (symbol + glow) — **bez TODO w UI**.
+
+TODO: client should provide clean portrait / outdoor photo for these placements.
+
+## Logo
+
+Wyłącznie oficjalne PNG z `assets/logo/`:
 
 | Plik w `public/assets/logo/` | Zastosowanie |
 |------------------------------|--------------|
-| `header.png` | Header desktop (poziomy, biały) |
-| `symbol.png` | Mobile header, favicon, dekoracja hero |
-| `footer.png` | Footer (pionowy zwarty) |
-
-Nie modyfikuj plików w `assets/logo/` — to materiały źródłowe.
-
-**Zdjęcia** — pliki w `exemplary/` to kompozycje social media (tekst, logo, UI). Nie są używane jako zdjęcia na stronie. Potrzebne czyste fotografie do hero/story.
+| `header.png` | Header desktop |
+| `symbol.png` | Mobile header, favicon, placeholdery |
+| `footer.png` | Footer |
 
 ## Open questions / TODO
 
-- [ ] **Finalna forma programu 1:1** — obecnie: 10 spotkań po około 100 minut (`src/data/offer.ts`)
-- [ ] **Dane kontaktowe** — e-mail, telefon, social media
-- [ ] **Integracja formularza** — obecnie frontend z neutralnym submit (`src/scripts/main.ts`, komentarz `TODO: integrate contact form`)
-- [ ] **Okładka workbooka** — mockup oznaczony jako CONCEPT PLACEHOLDER (`EbookTeaser.astro`)
-- [ ] **Oferta B2B** — kierunek bez szczegółów pakietów
-- [ ] **Czyste fotografie Przemysława** — do hero i sekcji Story
-- [ ] **Favicon** — obecnie oficjalny symbol PNG; ewentualna konwersja do `.ico`
-- [ ] **Czy „pierwsza godzina darmowa" nadal obowiązuje** — w materiałach social, nie na stronie
+- [ ] **Czyste fotografie Przemysława** — portrait hero, outdoor/activity story, partial CTA
+- [ ] **Finalna forma programu 1:1** — obecnie w `offer.ts`: ok. 10 spotkań · ok. 100 min (30/60/10)
+- [ ] **Dane kontaktowe** — e-mail, telefon, social
+- [ ] **Integracja formularza** — UI gotowe, submit nieaktywny (`TODO: integrate contact form`)
+- [ ] **Okładka workbooka** — CONCEPT PLACEHOLDER
+- [ ] **Oferta B2B** — kierunek bez pakietów
 - [ ] **Kanoniczna forma tagline** — kropki vs przecinki
-- [ ] **Analytics** — do dodania przy deploy
-- [ ] **Przyszła sprzedaż produktów cyfrowych** — checkout, płatności
+- [ ] **Analytics** — przy deploy
+- [ ] **Przyszła sprzedaż produktów cyfrowych**

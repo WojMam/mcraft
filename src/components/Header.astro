@@ -8,9 +8,7 @@ import { withBase } from '../utils/withBase';
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
   data-header
 >
-  <div
-    class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10"
-  >
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
     <a href="#" class="relative z-10 shrink-0" aria-label="Mental Craft — strona główna">
       <img
         src={withBase('assets/logo/header.png')}
@@ -28,10 +26,7 @@ import { withBase } from '../utils/withBase';
       />
     </a>
 
-    <nav
-      class="hidden items-center gap-10 lg:flex"
-      aria-label="Nawigacja główna"
-    >
+    <nav class="hidden items-center gap-10 lg:flex" aria-label="Nawigacja główna">
       {
         navigation.map((item) => (
           <a
