@@ -6,7 +6,7 @@ import Button from './ui/Button.astro';
 
 <section
   id="oferta"
-  class="relative overflow-hidden py-24 md:py-28"
+  class="relative overflow-x-clip py-[var(--section-py-md)] md:py-28"
   aria-labelledby="offer-heading"
 >
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -17,7 +17,7 @@ import Button from './ui/Button.astro';
   </div>
 
   <div class="relative mx-auto max-w-7xl px-6 lg:px-10">
-    <div class="grid gap-14 lg:grid-cols-12">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-14">
       <div class="lg:col-span-5">
         <div class="reveal lg:sticky lg:top-32" data-reveal>
           <SectionLabel text={offerOneOnOne.label} />
@@ -31,7 +31,7 @@ import Button from './ui/Button.astro';
             {offerOneOnOne.subline}
           </p>
           <p
-            class="type-ui mt-8 inline-block border border-mc-orange/40 px-4 py-2 text-sm uppercase tracking-widest text-mc-orange"
+            class="type-ui mt-6 inline-block max-w-full border border-mc-orange/40 px-3 py-1.5 text-[0.7rem] uppercase leading-snug tracking-[0.18em] text-mc-orange sm:px-4 sm:py-2 sm:text-sm sm:tracking-widest"
           >
             {offerOneOnOne.sessions}
           </p>
@@ -39,13 +39,35 @@ import Button from './ui/Button.astro';
       </div>
 
       <div class="lg:col-span-6 lg:col-start-7">
-        <div class="reveal mb-12" data-reveal>
-          <p
-            class="type-eyebrow mb-5 text-xs uppercase tracking-[0.35em] text-mc-orange"
-          >
+        <div class="reveal mb-8 md:mb-12" data-reveal>
+          <p class="type-eyebrow mb-4 text-xs uppercase tracking-[0.35em] text-mc-orange md:mb-5">
             {offerOneOnOne.sessionAnatomyLabel}
           </p>
-          <div class="grid gap-3 sm:grid-cols-3">
+
+          <!-- Mobile: compact rows -->
+          <div
+            class="divide-y divide-mc-white/10 border-y border-mc-white/10 md:hidden"
+            role="list"
+          >
+            {
+              offerOneOnOne.sessionStructure.map((block) => (
+                <div class="flex items-baseline justify-between gap-4 py-3.5" role="listitem">
+                  <p class="type-editorial text-2xl tabular-nums leading-none text-mc-white">
+                    {block.duration.split(' ')[0]}
+                    <span class="type-ui ml-1 text-xs uppercase tracking-[0.18em] text-mc-orange">
+                      {block.duration.split(' ')[1]}
+                    </span>
+                  </p>
+                  <p class="type-eyebrow shrink-0 text-xs uppercase tracking-[0.22em] text-mc-white/80">
+                    {block.label}
+                  </p>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Desktop: card grid -->
+          <div class="hidden gap-3 md:grid md:grid-cols-3">
             {
               offerOneOnOne.sessionStructure.map((block) => (
                 <div class="border border-mc-white/10 bg-mc-surface/40 px-5 py-6">
@@ -68,15 +90,12 @@ import Button from './ui/Button.astro';
           {
             offerOneOnOne.processElements.map((element, i) => (
               <li
-                class="reveal border-t border-mc-white/10 py-6"
+                class="reveal border-t border-mc-white/10 py-5 md:py-6"
                 data-reveal
                 data-reveal-delay={i * 60}
               >
-                <div class="flex gap-5">
-                  <span
-                    class="type-editorial text-2xl text-mc-white/10"
-                    aria-hidden="true"
-                  >
+                <div class="flex gap-4 md:gap-5">
+                  <span class="type-editorial text-xl text-mc-white/25 md:text-2xl" aria-hidden="true">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <p class="text-base leading-relaxed text-mc-white md:text-lg">{element}</p>
@@ -87,12 +106,14 @@ import Button from './ui/Button.astro';
           <li class="border-t border-mc-white/10" aria-hidden="true"></li>
         </ul>
 
-        <p class="reveal mt-8 text-sm italic text-mc-muted" data-reveal>
+        <p class="reveal mt-6 text-sm italic text-mc-muted md:mt-8" data-reveal>
           {offerOneOnOne.note}
         </p>
 
-        <div class="reveal mt-10" data-reveal>
-          <Button href="#kontakt" variant="primary">{offerOneOnOne.cta}</Button>
+        <div class="reveal mt-8 md:mt-10" data-reveal>
+          <Button href="#kontakt" variant="primary" class="w-full py-3.5 md:w-auto md:py-4">
+            {offerOneOnOne.cta}
+          </Button>
         </div>
       </div>
     </div>

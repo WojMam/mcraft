@@ -30,10 +30,30 @@
   --font-display-signature: var(--font-signature);
   --font-display-editorial: var(--font-editorial);
   --font-ui: var(--font-display);
+
+  /* Mobile vertical rhythm (desktop uses component-level md: overrides) */
+  --section-py-lg: 5.5rem;
+  --section-py-md: 4rem;
+  --section-py-sm: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-py-lg: 7rem;
+    --section-py-md: 5rem;
+    --section-py-sm: 4.5rem;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+@supports not (overflow-x: clip) {
+  html {
+    overflow-x: hidden;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -56,6 +76,14 @@ body {
   color: var(--color-mc-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+@supports (padding: env(safe-area-inset-top)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
 }
 
 ::selection {
@@ -133,4 +161,21 @@ body {
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Mobile typography caps — desktop clamps unchanged in components */
+@media (max-width: 767px) {
+  .type-signature-mobile {
+    font-size: clamp(2.25rem, 10.5vw, 3.5rem);
+    line-height: 0.92;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .type-editorial-mobile-headline {
+    font-size: clamp(1.65rem, 5.8vw, 2.35rem);
+    line-height: 1.08;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
 }

@@ -78,6 +78,9 @@ function initMethodSticky() {
   const root = document.querySelector<HTMLElement>('[data-method-sticky]');
   if (!root) return;
 
+  const desktopQuery = window.matchMedia('(min-width: 1024px)');
+  if (!desktopQuery.matches) return;
+
   const viewport = root.querySelector<HTMLElement>('[data-method-viewport]');
   const panels = root.querySelectorAll<HTMLElement>('[data-method-panel]');
   const ambient = root.querySelector<HTMLElement>('[data-method-ambient]');
@@ -260,7 +263,7 @@ function initMethodMobile() {
         }
       });
     },
-    { threshold: 0.35, rootMargin: '-10% 0px -10% 0px' },
+    { threshold: 0.2, rootMargin: '0px 0px -8% 0px' },
   );
 
   steps.forEach((step) => observer.observe(step));

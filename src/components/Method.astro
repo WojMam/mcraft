@@ -71,28 +71,28 @@ import { site } from '../data/site';
     {
       methodSteps.map((step, index) => (
         <article
-          class="method-mobile-step relative flex min-h-[46vh] items-center overflow-hidden py-10"
+          class="method-mobile-step relative overflow-x-clip py-14 first:pt-10 last:pb-16 sm:py-16"
           aria-labelledby={`method-m-${step.id}`}
           data-method-mobile-step={index}
         >
-          <div class="pointer-events-none absolute inset-0" aria-hidden="true">
-            <span class="type-signature absolute right-6 top-1/2 -translate-y-1/2 text-[28vw] leading-none text-mc-white/[0.03]">
+          <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+            <span class="type-signature absolute right-4 top-1/2 max-w-[45vw] -translate-y-1/2 text-[clamp(3.5rem,22vw,5.5rem)] leading-none text-mc-white/[0.035]">
               {String(index + 1).padStart(2, '0')}
             </span>
           </div>
-          <div class="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+          <div class="relative mx-auto w-full max-w-7xl min-w-0 px-6">
             {index === 0 && (
-              <p class="type-eyebrow mb-6 text-xs uppercase tracking-[0.4em] text-mc-orange">
+              <p class="type-eyebrow mb-5 text-xs uppercase tracking-[0.4em] text-mc-orange">
                 {site.tagline}
               </p>
             )}
             <h2
               id={`method-m-${step.id}`}
-              class="type-signature text-[clamp(3.25rem,14vw,6rem)] uppercase leading-[0.9] tracking-tighter"
+              class="type-signature type-signature-mobile max-w-full uppercase tracking-tighter"
             >
               {step.title}
             </h2>
-            <p class="mt-8 max-w-xl text-lg leading-relaxed text-mc-muted md:text-xl">
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-mc-muted sm:mt-8 sm:text-lg">
               {step.description}
             </p>
           </div>
@@ -105,7 +105,18 @@ import { site } from '../data/site';
 <style>
   .method-section {
     --method-sticky-top: 4.5rem;
-    margin-top: clamp(-11rem, -26vh, -5rem);
+  }
+
+  @media (min-width: 1024px) {
+    .method-section {
+      margin-top: clamp(-11rem, -26vh, -5rem);
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .method-section {
+      margin-top: 0;
+    }
   }
 
   .method-panel {

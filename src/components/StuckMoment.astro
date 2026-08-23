@@ -4,12 +4,12 @@ import { stuckMoment } from '../data/content';
 
 <section
   id="problem"
-  class="relative flex min-h-[85vh] items-center overflow-hidden py-20 md:py-24"
+  class="relative flex min-h-0 items-center overflow-x-clip py-16 md:min-h-[85vh] md:py-24"
   aria-labelledby="stuck-heading"
 >
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
     <div
-      class="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(232,93,4,0.04),transparent_65%)]"
+      class="absolute left-1/2 top-1/2 h-[min(480px,90vw)] w-[min(480px,90vw)] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(232,93,4,0.04),transparent_65%)] md:h-[800px] md:w-[800px]"
     >
     </div>
   </div>
@@ -17,26 +17,26 @@ import { stuckMoment } from '../data/content';
   <!-- Background typography — anchored left, slight right bleed -->
   <h2
     id="stuck-heading"
-    class="type-signature pointer-events-none absolute left-4 top-[16%] z-0 max-w-[96vw] text-[clamp(3rem,10.5vw,9.5rem)] uppercase leading-none tracking-tighter text-mc-white/[0.07] md:left-8 lg:top-[18%]"
+    class="type-signature pointer-events-none absolute left-3 top-[14%] z-0 max-w-[92vw] text-[clamp(2.25rem,16vw,9.5rem)] uppercase leading-none tracking-tighter text-mc-white/[0.06] sm:left-4 md:left-8 md:top-[18%] md:max-w-[96vw] md:text-[clamp(3rem,10.5vw,9.5rem)] md:text-mc-white/[0.07]"
     aria-hidden="true"
   >
     {stuckMoment.headline}
   </h2>
 
   <div class="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-10">
-    <div class="relative pt-[clamp(5rem,14vw,9rem)] md:pt-[clamp(6rem,16vw,10rem)]">
+    <div class="relative pt-20 sm:pt-24 md:pt-[clamp(6rem,16vw,10rem)]">
       <p
-        class="reveal max-w-3xl text-2xl font-medium leading-snug text-mc-white md:text-4xl lg:text-5xl"
+        class="reveal max-w-3xl text-xl font-medium leading-snug text-mc-white sm:text-2xl md:text-4xl lg:text-5xl"
         data-reveal
       >
         {stuckMoment.lead}
       </p>
 
-      <ul class="mt-14 space-y-0" role="list">
+      <ul class="mt-10 space-y-0 md:mt-14" role="list">
         {
           stuckMoment.situations.map((situation, i) => (
             <li
-              class="reveal group border-t border-mc-white/10 py-6 md:py-8"
+              class="reveal group border-t border-mc-white/10 py-5 md:py-8"
               data-reveal
               data-reveal-delay={150 + i * 70}
             >
